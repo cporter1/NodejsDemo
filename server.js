@@ -8,17 +8,13 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/' , (req, res) => {
 	res.render('index', {
-            title: 'Homepage',
+            title: 'First-Node-Website',
             people: people.profiles
                });
 });
 
 app.get('/profile', (req, res) => {
-    console.log('people: ' + people.profiles);
-    
     const person = people.profiles.find(p => p.id === req.query.id);
-    
-    console.log('person: ' + person);
     
     res.render('profile', {
     title: `About ${person.firstname} ${person.lastname}`, person,
@@ -26,5 +22,5 @@ app.get('/profile', (req, res) => {
 });
 
 const server = app.listen (7000, () => {
-	console.log('Express running -> PORT ${server.address().port}')
+	console.log('Express running -> PORT 7000')
 });
